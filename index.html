@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>謎解きチャレンジ</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin: 20px; }
+        #riddle-container { border: 1px solid #ccc; padding: 20px; max-width: 600px; margin: 0 auto; }
+        #answer-input { padding: 8px; font-size: 16px; }
+        #submit-button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        #result-message { margin-top: 15px; font-weight: bold; }
+        .hidden { display: none; } /* 初期状態では非表示にするためのCSSクラス */
+    </style>
+</head>
+<body>
+    <div id="riddle-container">
+        <h1>第1の謎</h1>
+        <p>空から降る、透明な粒。時には優しく、時には激しく、地面を叩く。私は何でしょう？</p>
+        <input type="text" id="answer-input" placeholder="ここに答えを入力">
+        <button id="submit-button">回答を送信</button>
+        <p id="result-message"></p>
+
+        <div id="next-riddle" class="hidden">
+            <h2>正解！次の謎へ進もう！</h2>
+            <p>（ここに次の謎のヒントや問題文を入れるか、最終ゴールへの指示を出す）</p>
+            <p id="final-instruction" class="hidden">ベランダで記念撮影し、写真をQRコードで送信せよ！QRコードは同行する社員の社員証にある。</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('submit-button').addEventListener('click', function() {
+            const answerInput = document.getElementById('answer-input');
+            const resultMessage = document.getElementById('result-message');
+            const nextRiddle = document.getElementById('next-riddle');
+            const finalInstruction = document.getElementById('final-instruction');
+
+            const correctAnswer = '雨'; // ここに正解を設定
+
+            if (answerInput.value === correctAnswer) {
+                resultMessage.textContent = '正解！';
+                resultMessage.style.color = 'green';
+                nextRiddle.classList.remove('hidden'); // 正解したら次のコンテンツを表示
+                
+                // 例として、これが最終問題なら最後の指示を表示
+                if (correctAnswer === '雨') { // この部分を実際の最終問題の正解と紐付ける
+                    finalInstruction.classList.remove('hidden');
+                }
+
+            } else {
+                resultMessage.textContent = '残念、不正解です。もう一度考えよう。';
+                resultMessage.style.color = 'red';
+                nextRiddle.classList.add('hidden'); // 不正解なら次のコンテンツは非表示のまま
+                finalInstruction.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
