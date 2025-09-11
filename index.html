@@ -5,73 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>謎解きチャレンジ</title>
     <style>
-        body { font-family: sans-serif; text-align: center; margin: 20px; }
-        #riddle-container { /*border: 1px solid #ccc;*/ padding: 20px; max-width: 600px; margin: 0 auto; }
-        #answer-select { padding: 8px; font-size: 16px; }
-        #submit-button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
-        #result-message { margin-top: 15px; font-weight: bold; }
-        .hidden { display: none; }
-        .drop-down-menu {
-            background-color: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 1px;
-            padding: 10px 20px;
-            color: #2c3e50;
-            font-size: 16px; 
+        body {
+            font-family: sans-serif;
+            text-align: center; 
+            margin: 20px;
+            background-image: url(2025-08-27-113757.png); 
+        }
+        #riddle-container {
+            padding: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            gap: 5px;
+            width: 250px;
+            margin: 0 auto;
+        }
+
+        .card img {
+            width: 110px;
         }
     </style>
 </head>
 <body>
     <div id="riddle-container">
-        <h1>KKEラボの謎</h1>
-        <p>星が二番目に多い国旗はどれだ？</p>
-        <!-- <label>
-            <select name="drop-down-menu" class="drop-down-menu" id="answer-select">
-                <option value="date-国旗A">国旗A</option>
-                <option value="date-国旗B">国旗B</option>
-                <option value="date-国旗C">国旗C</option>
-                <option value="date-国旗D">国旗D</option>
-                <option value="date-国旗E">国旗E</option>
-                <option value="date-国旗F">国旗F</option>
-            </select>
-        </label>
-        <button id="submit-button">回答を送信</button>
-        <p id="result-message"></p>
-
-        <div id="next-riddle" class="hidden">
-            <h2>正解！次の謎へ進もう！</h2>
-            <p>（ここに次の謎のヒントや問題文を入れるか、最終ゴールへの指示を出す）</p>
-            <p id="final-instruction" class="hidden">ベランダで記念撮影し、写真をQRコードで送信せよ！QRコードは同行する社員の社員証にある。</p>
-        </div> -->
+        <h2>KKEラボの謎</h2>
+        <p>赤色が入っていない国旗の数は？<br>
+        <span style="font-size: small;">How many national flags do not contain red?</span></p>
     </div>
 
-    <script>
-        document.getElementById('submit-button').addEventListener('click', function() {
-            // IDでドロップダウンメニューを取得
-            const answerSelect = document.getElementById('answer-select');
-            const resultMessage = document.getElementById('result-message');
-            const nextRiddle = document.getElementById('next-riddle');
-            const finalInstruction = document.getElementById('final-instruction');
-
-            //正解を文字列とする
-            const correctAnswer = 'date-国旗A'; 
-
-            if (answerSelect.value === correctAnswer) {
-                resultMessage.textContent = '正解！';
-                resultMessage.style.color = 'green';
-                nextRiddle.classList.remove('hidden');
-                
-                if (answerSelect.value === 'date-国旗A') { 
-                    finalInstruction.classList.remove('hidden');
-                }
-
-            } else {
-                resultMessage.textContent = '残念、不正解です。もう一度考えよう。';
-                resultMessage.style.color = 'red';
-                nextRiddle.classList.add('hidden');
-                finalInstruction.classList.add('hidden');
-            }
-        });
-    </script>
+    <div class="card-container">
+        <div class="card">
+            <img src="China.png" alt="中国の国旗">
+            </div>
+        <div class="card">
+            <img src="Indonesia.png" alt="インドネシアの国旗">
+            </div>
+        <div class="card">
+            <img src="Japan.png" alt="日本の国旗">
+            </div>
+        <div class="card">
+            <img src="Korea.png" alt="韓国の国旗">
+            </div>
+        <div class="card">
+            <img src="Micronesia.png" alt="ミクロネシアの国旗">
+            </div>
+        <div class="card">
+            <img src="new zealand.png" alt="ニュージーランドの国旗">
+            </div>
+        <div class="card">
+            <img src="Ireland.png" alt="アイルランドの国旗">
+            </div>
+        <div class="card">
+            <img src="madagascar.png" alt="マダガスカルの国旗">
+            </div>
+        </div>
 </body>
 </html>
