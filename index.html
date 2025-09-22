@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,11 @@
     <style>
         body {
             font-family: sans-serif;
-            text-align: center; 
+            text-align: center;
             margin: 20px;
-            background-image: url(2025-08-27-113757.png); 
+            background-image: url(2025-08-27-113757.png);
         }
+
         #riddle-container {
             padding: 10px;
             max-width: 600px;
@@ -20,7 +22,7 @@
         .card-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; 
+            justify-content: center;
             gap: 5px;
             width: 250px;
             margin: 0 auto;
@@ -29,40 +31,85 @@
         .card img {
             width: 110px;
         }
+
+        .text-box {
+            background-color: white;
+            border: 1px solid rgb(112, 86, 28);
+            border-radius: 5px;
+            padding: 10px 5px;
+            color: #2c3e50;
+            font-size: 16px;
+            width: 40%;
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
+
 <body>
     <div id="riddle-container">
         <h2>KKEラボの謎</h2>
         <p>赤色が入っていない国旗の数は？<br>
-        <span style="font-size: small;">How many national flags do not contain red?</span></p>
+            <span style="font-size: small;">How many national flags do not contain red?</span>
+        </p>
+    </div>
+    <div id="resultMessage" style="font-size: 16px;"></div><br>
+    <div id="next-riddle" class="hidden" style="color: green;">
+        <h2>正解！次の謎へ進もう！</h2>
+    </div>
+
+    <div class="card-container">
+        <input type="number" class="text-box" id="answer-box">
+        <button id="submit-button" class="send-button" style="font-size: 20px;">送信</button>
     </div>
 
     <div class="card-container">
         <div class="card">
             <img src="China.png" alt="中国の国旗">
-            </div>
+        </div>
         <div class="card">
             <img src="Indonesia.png" alt="インドネシアの国旗">
-            </div>
+        </div>
         <div class="card">
             <img src="Japan.png" alt="日本の国旗">
-            </div>
+        </div>
         <div class="card">
             <img src="Korea.png" alt="韓国の国旗">
-            </div>
+        </div>
         <div class="card">
             <img src="Micronesia.png" alt="ミクロネシアの国旗">
-            </div>
+        </div>
         <div class="card">
             <img src="new zealand.png" alt="ニュージーランドの国旗">
-            </div>
+        </div>
         <div class="card">
             <img src="Ireland.png" alt="アイルランドの国旗">
-            </div>
+        </div>
         <div class="card">
             <img src="madagascar.png" alt="マダガスカルの国旗">
-            </div>
         </div>
+    </div>
+
 </body>
+<script>
+    document.getElementById('submit-button').addEventListener('click', function () {
+
+        const answerBox = document.getElementById('answer-box');
+        const resultMessage = document.getElementById('resultMessage');
+         const nextRiddle = document.getElementById('next-riddle');
+
+        if (answerBox.value === '2') {
+            resultMessage.textContent = '';
+            nextRiddle.classList.remove('hidden');
+
+        } else {
+            if(answerBox.value === '') {return}
+            resultMessage.style.color = 'red';
+            resultMessage.textContent = `残念、${answerBox.value}は不正解です。もう一度考えよう。`;
+        }
+    });
+</script>
+
 </html>
